@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ac.cn.spring.mapper.personsMapper">
+  <resultMap id="BaseResultMap" type="ac.cn.spring.entity.persons">
+    <result column="PersonID" jdbcType="INTEGER" property="personid" />
+    <result column="LastName" jdbcType="VARCHAR" property="lastname" />
+    <result column="FirstName" jdbcType="VARCHAR" property="firstname" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="City" jdbcType="VARCHAR" property="city" />
+  </resultMap>
+  <insert id="insert" parameterType="ac.cn.spring.entity.persons">
+    insert into persons (PersonID, LastName, FirstName, 
+      Address, City)
+    values (#{personid,jdbcType=INTEGER}, #{lastname,jdbcType=VARCHAR}, #{firstname,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="ac.cn.spring.entity.persons">
+    insert into persons
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personid != null">
+        PersonID,
+      </if>
+      <if test="lastname != null">
+        LastName,
+      </if>
+      <if test="firstname != null">
+        FirstName,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+      <if test="city != null">
+        City,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="personid != null">
+        #{personid,jdbcType=INTEGER},
+      </if>
+      <if test="lastname != null">
+        #{lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="firstname != null">
+        #{firstname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

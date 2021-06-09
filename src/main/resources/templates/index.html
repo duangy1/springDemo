@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/index-layout}">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+<!----------------------------------------------- content ---------------------------------------------------->
+<div layout:fragment="page_content">
+    <div class="container">
+        <h1>hello index</h1>
+        <div class="row py-5">
+            <div class="col-md-3 col-sm-12">
+                <a class="card square" th:href="@{/}">
+                    <div class="text-center pt-3 ">
+                        <i class="fas fa-window-restore"></i>
+                    </div>
+                    <div class="card-body pt-1">
+                        <div class="text-center pb-mb-0"><span class="h3">Cancer studies</span></div>
+                        <p class="text-center pt-1 my-cnt">111</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-12">
+                <a class="card square" th:href="@{/}">
+                    <div class="text-center pt-3">
+                        <i class="fa fa-cubes"></i>
+                    </div>
+                    <div class="card-body pt-1">
+                        <div class="text-center pb-mb-0"><span class="h3">Cancer Types</span></div>
+                        <p class="text-center pt-1 my-cnt">222</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-12">
+                <a class="card square" th:href="@{/}">
+                    <div class="text-center pt-3">
+                        <i class="fas fa-user-tag"></i>
+                    </div>
+                    <div class="card-body pt-1">
+                        <div class="text-center pb-mb-0"><span class="h3">Donors</span></div>
+                        <p class="text-center pt-1 my-cnt">333</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-12">
+                <a class="card square" th:href="@{/samples}">
+                    <div class="text-center pt-3">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="card-body pt-1">
+                        <div class="text-center pb-mb-0"><span class="h3">Samples</span></div>
+                        <p class="text-center pt-1 my-cnt">444</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ac.cn.spring.mapper.sampleMapper">
+  <resultMap id="BaseResultMap" type="ac.cn.spring.entity.sample">
+    <id column="sample_id" jdbcType="INTEGER" property="sampleId" />
+    <result column="sample_accession" jdbcType="VARCHAR" property="sampleAccession" />
+    <result column="original_sample_name" jdbcType="VARCHAR" property="originalSampleName" />
+    <result column="sample_name" jdbcType="VARCHAR" property="sampleName" />
+    <result column="indv_accession" jdbcType="VARCHAR" property="indvAccession" />
+    <result column="prj_accession" jdbcType="VARCHAR" property="prjAccession" />
+    <result column="prj_code" jdbcType="VARCHAR" property="prjCode" />
+    <result column="study_accession" jdbcType="VARCHAR" property="studyAccession" />
+    <result column="tumor_type" jdbcType="VARCHAR" property="tumorType" />
+    <result column="primary_site" jdbcType="VARCHAR" property="primarySite" />
+    <result column="country_regions_code" jdbcType="VARCHAR" property="countryRegionsCode" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="tissue_type" jdbcType="VARCHAR" property="tissueType" />
+    <result column="indv_index" jdbcType="VARCHAR" property="indvIndex" />
+    <result column="ffpe" jdbcType="BIT" property="ffpe" />
+    <result column="sample_available" jdbcType="BIT" property="sampleAvailable" />
+    <result column="matched_sample" jdbcType="VARCHAR" property="matchedSample" />
+    <result column="collection_date" jdbcType="DATE" property="collectionDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sample_id, sample_accession, original_sample_name, sample_name, indv_accession, prj_accession, 
+    prj_code, study_accession, tumor_type, primary_site, country_regions_code, organization, 
+    tissue_type, indv_index, ffpe, sample_available, matched_sample, collection_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sample
+    where sample_id = #{sampleId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="ac.cn.spring.entity.sample">
+    insert into sample (sample_id, sample_accession, original_sample_name, 
+      sample_name, indv_accession, prj_accession, 
+      prj_code, study_accession, tumor_type, 
+      primary_site, country_regions_code, organization, 
+      tissue_type, indv_index, ffpe, 
+      sample_available, matched_sample, collection_date
+      )
+    values (#{sampleId,jdbcType=INTEGER}, #{sampleAccession,jdbcType=VARCHAR}, #{originalSampleName,jdbcType=VARCHAR}, 
+      #{sampleName,jdbcType=VARCHAR}, #{indvAccession,jdbcType=VARCHAR}, #{prjAccession,jdbcType=VARCHAR}, 
+      #{prjCode,jdbcType=VARCHAR}, #{studyAccession,jdbcType=VARCHAR}, #{tumorType,jdbcType=VARCHAR}, 
+      #{primarySite,jdbcType=VARCHAR}, #{countryRegionsCode,jdbcType=VARCHAR}, #{organization,jdbcType=VARCHAR}, 
+      #{tissueType,jdbcType=VARCHAR}, #{indvIndex,jdbcType=VARCHAR}, #{ffpe,jdbcType=BIT}, 
+      #{sampleAvailable,jdbcType=BIT}, #{matchedSample,jdbcType=VARCHAR}, #{collectionDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ac.cn.spring.entity.sample">
+    insert into sample
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sampleId != null">
+        sample_id,
+      </if>
+      <if test="sampleAccession != null">
+        sample_accession,
+      </if>
+      <if test="originalSampleName != null">
+        original_sample_name,
+      </if>
+      <if test="sampleName != null">
+        sample_name,
+      </if>
+      <if test="indvAccession != null">
+        indv_accession,
+      </if>
+      <if test="prjAccession != null">
+        prj_accession,
+      </if>
+      <if test="prjCode != null">
+        prj_code,
+      </if>
+      <if test="studyAccession != null">
+        study_accession,
+      </if>
+      <if test="tumorType != null">
+        tumor_type,
+      </if>
+      <if test="primarySite != null">
+        primary_site,
+      </if>
+      <if test="countryRegionsCode != null">
+        country_regions_code,
+      </if>
+      <if test="organization != null">
+        organization,
+      </if>
+      <if test="tissueType != null">
+        tissue_type,
+      </if>
+      <if test="indvIndex != null">
+        indv_index,
+      </if>
+      <if test="ffpe != null">
+        ffpe,
+      </if>
+      <if test="sampleAvailable != null">
+        sample_available,
+      </if>
+      <if test="matchedSample != null">
+        matched_sample,
+      </if>
+      <if test="collectionDate != null">
+        collection_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sampleId != null">
+        #{sampleId,jdbcType=INTEGER},
+      </if>
+      <if test="sampleAccession != null">
+        #{sampleAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="originalSampleName != null">
+        #{originalSampleName,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleName != null">
+        #{sampleName,jdbcType=VARCHAR},
+      </if>
+      <if test="indvAccession != null">
+        #{indvAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAccession != null">
+        #{prjAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCode != null">
+        #{prjCode,jdbcType=VARCHAR},
+      </if>
+      <if test="studyAccession != null">
+        #{studyAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="tumorType != null">
+        #{tumorType,jdbcType=VARCHAR},
+      </if>
+      <if test="primarySite != null">
+        #{primarySite,jdbcType=VARCHAR},
+      </if>
+      <if test="countryRegionsCode != null">
+        #{countryRegionsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null">
+        #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="tissueType != null">
+        #{tissueType,jdbcType=VARCHAR},
+      </if>
+      <if test="indvIndex != null">
+        #{indvIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="ffpe != null">
+        #{ffpe,jdbcType=BIT},
+      </if>
+      <if test="sampleAvailable != null">
+        #{sampleAvailable,jdbcType=BIT},
+      </if>
+      <if test="matchedSample != null">
+        #{matchedSample,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionDate != null">
+        #{collectionDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ac.cn.spring.entity.sample">
+    update sample
+    <set>
+      <if test="sampleAccession != null">
+        sample_accession = #{sampleAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="originalSampleName != null">
+        original_sample_name = #{originalSampleName,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleName != null">
+        sample_name = #{sampleName,jdbcType=VARCHAR},
+      </if>
+      <if test="indvAccession != null">
+        indv_accession = #{indvAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="prjAccession != null">
+        prj_accession = #{prjAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="prjCode != null">
+        prj_code = #{prjCode,jdbcType=VARCHAR},
+      </if>
+      <if test="studyAccession != null">
+        study_accession = #{studyAccession,jdbcType=VARCHAR},
+      </if>
+      <if test="tumorType != null">
+        tumor_type = #{tumorType,jdbcType=VARCHAR},
+      </if>
+      <if test="primarySite != null">
+        primary_site = #{primarySite,jdbcType=VARCHAR},
+      </if>
+      <if test="countryRegionsCode != null">
+        country_regions_code = #{countryRegionsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null">
+        organization = #{organization,jdbcType=VARCHAR},
+      </if>
+      <if test="tissueType != null">
+        tissue_type = #{tissueType,jdbcType=VARCHAR},
+      </if>
+      <if test="indvIndex != null">
+        indv_index = #{indvIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="ffpe != null">
+        ffpe = #{ffpe,jdbcType=BIT},
+      </if>
+      <if test="sampleAvailable != null">
+        sample_available = #{sampleAvailable,jdbcType=BIT},
+      </if>
+      <if test="matchedSample != null">
+        matched_sample = #{matchedSample,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionDate != null">
+        collection_date = #{collectionDate,jdbcType=DATE},
+      </if>
+    </set>
+    where sample_id = #{sampleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ac.cn.spring.entity.sample">
+    update sample
+    set sample_accession = #{sampleAccession,jdbcType=VARCHAR},
+      original_sample_name = #{originalSampleName,jdbcType=VARCHAR},
+      sample_name = #{sampleName,jdbcType=VARCHAR},
+      indv_accession = #{indvAccession,jdbcType=VARCHAR},
+      prj_accession = #{prjAccession,jdbcType=VARCHAR},
+      prj_code = #{prjCode,jdbcType=VARCHAR},
+      study_accession = #{studyAccession,jdbcType=VARCHAR},
+      tumor_type = #{tumorType,jdbcType=VARCHAR},
+      primary_site = #{primarySite,jdbcType=VARCHAR},
+      country_regions_code = #{countryRegionsCode,jdbcType=VARCHAR},
+      organization = #{organization,jdbcType=VARCHAR},
+      tissue_type = #{tissueType,jdbcType=VARCHAR},
+      indv_index = #{indvIndex,jdbcType=VARCHAR},
+      ffpe = #{ffpe,jdbcType=BIT},
+      sample_available = #{sampleAvailable,jdbcType=BIT},
+      matched_sample = #{matchedSample,jdbcType=VARCHAR},
+      collection_date = #{collectionDate,jdbcType=DATE}
+    where sample_id = #{sampleId,jdbcType=INTEGER}
+  </update>
+</mapper>
